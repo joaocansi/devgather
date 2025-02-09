@@ -18,7 +18,7 @@ export default async function RootLayout({
   return (
     <>
       <Navbar session={session.data} />
-      <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+      <main className="container mx-auto max-w-5xl pt-8 px-6 flex-grow">
         {children}
       </main>
       <footer className="w-full flex items-center justify-center py-3">

@@ -10,10 +10,10 @@ import {
   NavbarItem,
 } from "@heroui/navbar";
 import React from "react";
-import { Avatar } from "@heroui/avatar";
 import Image from "next/image";
 
 import { ThemeSwitch } from "./theme-switch";
+import { Avatar } from "./avatar";
 
 type NavbarProps = {
   session: any;
@@ -66,13 +66,15 @@ export default function Navbar({ session }: NavbarProps) {
       </NavbarContent>
       <NavbarContent justify="end">
         <ThemeSwitch />
-        <NavbarItem>
+        <NavbarItem className="gap-2 flex">
           {session ? (
-            <Avatar isBordered size="sm" src={session.user.image} />
+            <Avatar user={session.user} />
           ) : (
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Sign Up
-            </Button>
+            <>
+              <Button as={Link} color="primary" href="/sign-in" variant="flat">
+                Sign In
+              </Button>
+            </>
           )}
         </NavbarItem>
       </NavbarContent>
