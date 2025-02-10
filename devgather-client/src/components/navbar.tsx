@@ -48,13 +48,11 @@ export default function Navbar({ session }: NavbarProps) {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Home
-          </Link>
-        </NavbarItem>
         <NavbarItem isActive>
-          <Link aria-current="page" href="#">
+          <Link href="#">Home</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link aria-current="page" color="foreground" href="#">
             Communities
           </Link>
         </NavbarItem>

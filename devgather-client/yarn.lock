@@ -180,6 +180,21 @@
     "@react-types/button" "3.10.1"
     "@react-types/shared" "3.26.0"
 
+"@heroui/card@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@heroui/card/-/card-2.2.10.tgz#cae964bd48fbd6c3bb1745adf811b93926eb38b3"
+  integrity sha512-VunP298v2FAtBg8U8ZLPIJUz4AIBSqjeaazVxGhN2ld3ipqygLNYCHRkG5UPwN1qYdsOEbx1ebMWgasPklwoLQ==
+  dependencies:
+    "@heroui/react-utils" "2.1.4"
+    "@heroui/ripple" "2.2.8"
+    "@heroui/shared-utils" "2.1.3"
+    "@heroui/use-aria-button" "2.2.5"
+    "@react-aria/button" "3.11.0"
+    "@react-aria/focus" "3.19.0"
+    "@react-aria/interactions" "3.22.5"
+    "@react-aria/utils" "3.26.0"
+    "@react-types/shared" "3.26.0"
+
 "@heroui/checkbox@^2.3.9":
   version "2.3.9"
   resolved "https://registry.yarnpkg.com/@heroui/checkbox/-/checkbox-2.3.9.tgz#9cb92b6dc8e0c561c941f2146cce152bc9531fba"
@@ -313,6 +328,15 @@
     "@heroui/shared-utils" "2.1.3"
     "@heroui/system" "2.4.7"
     "@heroui/use-measure" "2.1.2"
+
+"@heroui/image@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@heroui/image/-/image-2.2.6.tgz#aaa9f13c4d7c30e6934ab79a6259e57948af6a17"
+  integrity sha512-x7nEUYGziy7Pr7s9L2hpXwbHnvweyhw4suggwSw0JVQzZh54zyY8NJZYqQyTAnXbWYAtX/LTkn88pRfPQUaDZA==
+  dependencies:
+    "@heroui/react-utils" "2.1.4"
+    "@heroui/shared-utils" "2.1.3"
+    "@heroui/use-image" "2.1.3"
 
 "@heroui/input@2.4.9":
   version "2.4.9"
@@ -4173,6 +4197,11 @@ react-dom@18.3.1:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
+
+react-icons@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.4.0.tgz#443000f6e5123ee1b21ea8c0a716f6e7797f7416"
+  integrity sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==
 
 react-is@^16.13.1:
   version "16.13.1"
