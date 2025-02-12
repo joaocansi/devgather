@@ -74,7 +74,28 @@ export default async function Home() {
           ))}
         </div>
       </section>
-      <section />
+      <section className="flex flex-col justify-center gap-4 py-8 md:py-10">
+        <Divider />
+        <h3 className="text-3xl font-bold mb-8">Our stats</h3>
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center" />
+      </section>
+      {/* <p className="text-lg">
+        We are an open-source project, and we believe in the power of
+        collaboration. Whether you're a developer, designer, or just passionate
+        about tech, your contributions are valuable in shaping the future of our
+        platform.
+      </p>
+      <p className="text-lg">
+        Feel free to add new features, fix bugs, improve documentation, or share
+        your ideas. Every contribution, big or small, makes a difference.
+      </p>
+      <p className="text-lg">
+        Check out our GitHub repository, explore open issues, and start
+        collaborating today!
+      </p>
+      <Button className="w-48">
+        <GithubIcon /> Open Repository
+      </Button> */}
     </>
   );
 }

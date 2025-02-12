@@ -17,9 +17,10 @@ import { Avatar } from "./avatar";
 
 type NavbarProps = {
   session: any;
+  activePage: string;
 };
 
-export default function Navbar({ session }: NavbarProps) {
+export default function Navbar({ session, activePage }: NavbarProps) {
   const menuItems = [
     {
       name: "Home",
@@ -48,17 +49,21 @@ export default function Navbar({ session }: NavbarProps) {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive>
-          <Link href="#">Home</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link aria-current="page" color="foreground" href="#">
-            Communities
+        <NavbarItem isActive={activePage === "home"}>
+          <Link
+            color={activePage === "home" ? "primary" : "foreground"}
+            href="/"
+          >
+            Home
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Projects
+        <NavbarItem isActive={activePage === "communities"}>
+          <Link
+            aria-current="page"
+            color={activePage === "comunidades" ? "primary" : "foreground"}
+            href="/communities"
+          >
+            Communities
           </Link>
         </NavbarItem>
       </NavbarContent>
