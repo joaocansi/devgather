@@ -60,8 +60,9 @@ export default function Navbar({ session, activePage }: NavbarProps) {
         <NavbarItem isActive={activePage === "communities"}>
           <Link
             aria-current="page"
-            color={activePage === "comunidades" ? "primary" : "foreground"}
+            color={activePage === "communities" ? "primary" : "foreground"}
             href="/communities"
+            isDisabled={!session}
           >
             Communities
           </Link>
