@@ -37,7 +37,7 @@ export default function Navbar({ session, activePage }: NavbarProps) {
   ];
 
   return (
-    <HeroUINavbar>
+    <HeroUINavbar maxWidth="xl">
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand className="gap-1">
@@ -57,14 +57,14 @@ export default function Navbar({ session, activePage }: NavbarProps) {
             Home
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={activePage === "communities"}>
+        <NavbarItem isActive={activePage === "comunidades"}>
           <Link
             aria-current="page"
-            color={activePage === "communities" ? "primary" : "foreground"}
-            href="/communities"
+            color={activePage === "comunidades" ? "primary" : "foreground"}
+            href="/comunidades"
             isDisabled={!session}
           >
-            Communities
+            Comunidades
           </Link>
         </NavbarItem>
       </NavbarContent>

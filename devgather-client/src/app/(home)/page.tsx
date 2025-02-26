@@ -8,21 +8,21 @@ import Link from "next/link";
 const cardData = [
   {
     imageSrc: "/1.png",
-    title: "Build your profile.",
+    title: "Crie seu perfil.",
     description:
-      "Set up your account, showcase your skills, and start connecting with devs.",
+      "Configure sua conta, mostre suas habilidades e comece a se conectar com devs.",
   },
   {
     imageSrc: "/3.png",
-    title: "Join communities.",
+    title: "Entre em comunidades.",
     description:
-      "Connect with developers who share your interests and tech stack.",
+      "Conecte-se com desenvolvedores que compartilham seus interesses e stack de tecnologia.",
   },
   {
     imageSrc: "/2.png",
-    title: "Collaborate on projects.",
+    title: "Colabore em projetos.",
     description:
-      "Find or start projects and work with others to improve your skills.",
+      "Encontre ou inicie projetos e trabalhe com outros para melhorar suas habilidades.",
   },
 ];
 
@@ -30,18 +30,18 @@ export default async function Home() {
   return (
     <>
       <section className="flex flex-col justify-center gap-4 py-8 md:py-10">
-        <div className="max-w-2xl flex flex-col gap-2">
+        <div className="max-w-3xl flex flex-col gap-2">
           <h3 className="text-5xl font-bold">
-            Connect with{" "}
+            Conecte-se com{" "}
             <Code className="text-5xl" color="primary">
-              developers
+              desenvolvedores
             </Code>{" "}
-            around the world
+            ao redor do Brasil
             <span className="text-primary">.</span>
           </h3>
-          <p>
-            Meet developers who share your passion for programming, collaborate
-            on exciting projects, and expand your network.
+          <p className="text-lg">
+            Conheça desenvolvedores que compartilham sua paixão por programação,
+            colabore em projetos empolgantes e expanda sua rede.
           </p>
           <Button
             as={Link}
@@ -49,13 +49,13 @@ export default async function Home() {
             color="primary"
             href="/sign-up"
           >
-            Start now
+            Comece agora
           </Button>
         </div>
       </section>
       <section className="flex flex-col justify-center gap-4 py-8 md:py-10">
         <Divider />
-        <h3 className="text-3xl font-bold mb-8">How it works?</h3>
+        <h3 className="text-3xl font-bold mb-8">Como funciona?</h3>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center">
           {cardData.map((card, index) => (
             <Card
@@ -76,26 +76,9 @@ export default async function Home() {
       </section>
       <section className="flex flex-col justify-center gap-4 py-8 md:py-10">
         <Divider />
-        <h3 className="text-3xl font-bold mb-8">Our stats</h3>
+        <h3 className="text-3xl font-bold mb-8">Nossas estatísticas</h3>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center" />
       </section>
-      {/* <p className="text-lg">
-        We are an open-source project, and we believe in the power of
-        collaboration. Whether you're a developer, designer, or just passionate
-        about tech, your contributions are valuable in shaping the future of our
-        platform.
-      </p>
-      <p className="text-lg">
-        Feel free to add new features, fix bugs, improve documentation, or share
-        your ideas. Every contribution, big or small, makes a difference.
-      </p>
-      <p className="text-lg">
-        Check out our GitHub repository, explore open issues, and start
-        collaborating today!
-      </p>
-      <Button className="w-48">
-        <GithubIcon /> Open Repository
-      </Button> */}
     </>
   );
 }

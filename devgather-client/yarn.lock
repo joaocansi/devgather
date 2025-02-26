@@ -381,6 +381,25 @@
     "@react-aria/utils" "3.26.0"
     "@react-types/link" "3.5.9"
 
+"@heroui/listbox@2.3.10":
+  version "2.3.10"
+  resolved "https://registry.yarnpkg.com/@heroui/listbox/-/listbox-2.3.10.tgz#1261f8ef0514946ebe9900fec3bef0935d925b59"
+  integrity sha512-UuGQeGwqOj0v5ibLKd0xvoJ8ZfqvjCQFAAvyy1tERbI7ERGnL8upN+dOdRkwn+rnSYs1CmnFsvK8fNlcGalQQQ==
+  dependencies:
+    "@heroui/aria-utils" "2.2.8"
+    "@heroui/divider" "2.2.6"
+    "@heroui/react-utils" "2.1.4"
+    "@heroui/shared-utils" "2.1.3"
+    "@heroui/use-is-mobile" "2.2.3"
+    "@react-aria/focus" "3.19.0"
+    "@react-aria/interactions" "3.22.5"
+    "@react-aria/listbox" "3.13.6"
+    "@react-aria/utils" "3.26.0"
+    "@react-stately/list" "3.11.1"
+    "@react-types/menu" "3.9.13"
+    "@react-types/shared" "3.26.0"
+    "@tanstack/react-virtual" "3.11.2"
+
 "@heroui/listbox@2.3.9":
   version "2.3.9"
   resolved "https://registry.yarnpkg.com/@heroui/listbox/-/listbox-2.3.9.tgz#dcbb150cf952d71aae009ce1a227222c55df0e03"
@@ -502,6 +521,40 @@
     "@heroui/dom-animation" "2.1.2"
     "@heroui/react-utils" "2.1.4"
     "@heroui/shared-utils" "2.1.3"
+
+"@heroui/scroll-shadow@2.3.6":
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/@heroui/scroll-shadow/-/scroll-shadow-2.3.6.tgz#c039bb9cb2ae302ee87d91b7d70c6b1888f37fec"
+  integrity sha512-n1OxJO8ZrjQHoV5XcAAwmeCGGAw2tHd5BJZXHFb0KH9MbwheFTwudlqlSdLdMV8+kVdaPPZmQTXgebzp1sxaKw==
+  dependencies:
+    "@heroui/react-utils" "2.1.4"
+    "@heroui/shared-utils" "2.1.3"
+    "@heroui/use-data-scroll-overflow" "2.2.3"
+
+"@heroui/select@^2.4.10":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@heroui/select/-/select-2.4.10.tgz#14ba8257843d088608d8c9e584d991ed7f769711"
+  integrity sha512-mMxW44Ztkg6oL9DUv327Rm8loG00kjGoTGvlgDxpxGdBJRqEYvLz+r0xBVyyyQdtr9DGJoOSmDHN7IjQpjGwnA==
+  dependencies:
+    "@heroui/aria-utils" "2.2.8"
+    "@heroui/form" "2.1.9"
+    "@heroui/listbox" "2.3.10"
+    "@heroui/popover" "2.3.10"
+    "@heroui/react-utils" "2.1.4"
+    "@heroui/scroll-shadow" "2.3.6"
+    "@heroui/shared-icons" "2.1.2"
+    "@heroui/shared-utils" "2.1.3"
+    "@heroui/spinner" "2.2.7"
+    "@heroui/use-aria-button" "2.2.5"
+    "@heroui/use-aria-multiselect" "2.4.4"
+    "@heroui/use-safe-layout-effect" "2.1.2"
+    "@react-aria/focus" "3.19.0"
+    "@react-aria/form" "3.0.11"
+    "@react-aria/interactions" "3.22.5"
+    "@react-aria/utils" "3.26.0"
+    "@react-aria/visually-hidden" "3.8.18"
+    "@react-types/shared" "3.26.0"
+    "@tanstack/react-virtual" "3.11.2"
 
 "@heroui/shared-icons@2.1.1":
   version "2.1.1"
@@ -698,6 +751,26 @@
     "@react-types/link" "3.5.9"
     "@react-types/shared" "3.26.0"
 
+"@heroui/use-aria-multiselect@2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@heroui/use-aria-multiselect/-/use-aria-multiselect-2.4.4.tgz#7b9eb26e87120e3f93b71fbab74c7b5755272639"
+  integrity sha512-ZMRX4bbj9jHMdOi9IQWzaAE9vdLfxr8r9Zew87neDymrCFbvKnBcvag8lMNeTBBvZNAggIMzyTAXbOZWxUkwhw==
+  dependencies:
+    "@react-aria/i18n" "3.12.4"
+    "@react-aria/interactions" "3.22.5"
+    "@react-aria/label" "3.7.13"
+    "@react-aria/listbox" "3.13.6"
+    "@react-aria/menu" "3.16.0"
+    "@react-aria/selection" "3.21.0"
+    "@react-aria/utils" "3.26.0"
+    "@react-stately/form" "3.1.0"
+    "@react-stately/list" "3.11.1"
+    "@react-stately/menu" "3.9.0"
+    "@react-types/button" "3.10.1"
+    "@react-types/overlays" "3.8.11"
+    "@react-types/select" "3.9.8"
+    "@react-types/shared" "3.26.0"
+
 "@heroui/use-callback-ref@2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@heroui/use-callback-ref/-/use-callback-ref-2.1.2.tgz#f802658cea704a8e161c988acc96b662c94228d0"
@@ -709,6 +782,13 @@
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@heroui/use-clipboard/-/use-clipboard-2.1.2.tgz#b93ce747e748ba8c7cb1897b127aff3ec2571754"
   integrity sha512-D0TG7QtS7QetDJAb6h4AnxXcjgFcK1Ldt+H+W3ZPfjANGSGeQTh4WgO4jiTbETJMF8V6Xbplu9IUd6daC+J/YA==
+
+"@heroui/use-data-scroll-overflow@2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@heroui/use-data-scroll-overflow/-/use-data-scroll-overflow-2.2.3.tgz#ca0ba8897cb82cb178713fa3f8ecdf069c40c47f"
+  integrity sha512-G80ZYiKAK6YOlQHbGkjI5iOvm3jBOSAJElpL5/VBto33hRtw0LlvJWiVu0s0nWOaxaAgX0ug/kAihZmq7uRYRA==
+  dependencies:
+    "@heroui/shared-utils" "2.1.3"
 
 "@heroui/use-image@2.1.3":
   version "2.1.3"
@@ -1190,6 +1270,17 @@
     "@swc/helpers" "^0.5.0"
     clsx "^2.0.0"
 
+"@react-aria/form@3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@react-aria/form/-/form-3.0.11.tgz#84511874e1fad5f981bae97ebd4d549923849455"
+  integrity sha512-oXzjTiwVuuWjZ8muU0hp3BrDH5qjVctLOF50mjPvqUbvXQTHhoDxWweyIXPQjGshaqBd2w4pWaE4A2rG2O/apw==
+  dependencies:
+    "@react-aria/interactions" "^3.22.5"
+    "@react-aria/utils" "^3.26.0"
+    "@react-stately/form" "^3.1.0"
+    "@react-types/shared" "^3.26.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/form@^3.0.11":
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/@react-aria/form/-/form-3.0.12.tgz#1d916c15dfa050e4c02a689151a92b4d10bec445"
@@ -1247,6 +1338,15 @@
     "@react-aria/ssr" "^3.9.7"
     "@react-aria/utils" "^3.27.0"
     "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/label@3.7.13":
+  version "3.7.13"
+  resolved "https://registry.yarnpkg.com/@react-aria/label/-/label-3.7.13.tgz#9e7153a1ded878b5147d141effc3eb226f3c6c1f"
+  integrity sha512-brSAXZVTey5RG/Ex6mTrV/9IhGSQFU4Al34qmjEDho+Z2qT4oPwf8k7TRXWWqzOU0ugYxekYbsLd2zlN3XvWcg==
+  dependencies:
+    "@react-aria/utils" "^3.26.0"
+    "@react-types/shared" "^3.26.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/label@^3.7.13":
@@ -1337,6 +1437,19 @@
     "@react-types/button" "^3.10.2"
     "@react-types/overlays" "^3.8.12"
     "@react-types/shared" "^3.27.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/selection@3.21.0":
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/selection/-/selection-3.21.0.tgz#c5660e73a38db5e3e1cdc722e408b4489f5f589a"
+  integrity sha512-52JJ6hlPcM+gt0VV3DBmz6Kj1YAJr13TfutrKfGWcK36LvNCBm1j0N+TDqbdnlp8Nue6w0+5FIwZq44XPYiBGg==
+  dependencies:
+    "@react-aria/focus" "^3.19.0"
+    "@react-aria/i18n" "^3.12.4"
+    "@react-aria/interactions" "^3.22.5"
+    "@react-aria/utils" "^3.26.0"
+    "@react-stately/selection" "^3.18.0"
+    "@react-types/shared" "^3.26.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/selection@^3.21.0":
@@ -1767,6 +1880,13 @@
   dependencies:
     "@react-types/shared" "^3.27.0"
 
+"@react-types/select@3.9.8":
+  version "3.9.8"
+  resolved "https://registry.yarnpkg.com/@react-types/select/-/select-3.9.8.tgz#2443b82549b65821f85876a5b803e6d04ae6343e"
+  integrity sha512-RGsYj2oFjXpLnfcvWMBQnkcDuKkwT43xwYWZGI214/gp/B64tJiIUgTM5wFTRAeGDX23EePkhCQF+9ctnqFd6g==
+  dependencies:
+    "@react-types/shared" "^3.26.0"
+
 "@react-types/shared@3.25.0":
   version "3.25.0"
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.25.0.tgz#7223baf72256e918a3c29081bb1ecc6fad4fbf58"
@@ -1877,6 +1997,14 @@
   version "3.11.2"
   resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.11.2.tgz#00409e743ac4eea9afe5b7708594d5fcebb00212"
   integrity sha512-vTtpNt7mKCiZ1pwU9hfKPhpdVO2sVzFQsxoVBGtOSHxlrRRzYr8iQ2TlwbAcRYCcEiZ9ECAM8kBzH0v2+VzfKw==
+
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.6.tgz#6bba74383cdab98e8db4e20ce5b4a6b98caed010"
+  integrity sha512-lPByRJUer/iN/xa4qpyL0qmL11DqNW81iU/IG1S3uvRUq4oKagz8VCxZjiWkumgt66YT3vOdDgZ0o32sGKtCEw==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -2567,6 +2695,11 @@ deepmerge@4.3.1:
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
   integrity sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==
 
+deepmerge@^2.1.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
+  integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
+
 define-data-property@^1.0.1, define-data-property@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/define-data-property/-/define-data-property-1.1.4.tgz#894dc141bb7d3060ae4366f6a0107e68fbe48c5e"
@@ -3164,6 +3297,20 @@ foreground-child@^3.1.0:
     cross-spawn "^7.0.0"
     signal-exit "^4.0.1"
 
+formik@^2.4.6:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.4.6.tgz#4da75ca80f1a827ab35b08fd98d5a76e928c9686"
+  integrity sha512-A+2EI7U7aG296q2TLGvNapDNTZp1khVt5Vk0Q/fyfSROss0V/V6+txt2aJnwEos44IxTCW/LYAi/zgWzlevj+g==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.1"
+    deepmerge "^2.1.1"
+    hoist-non-react-statics "^3.3.0"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+    react-fast-compare "^2.0.1"
+    tiny-warning "^1.0.2"
+    tslib "^2.0.0"
+
 fraction.js@^4.3.7:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.7.tgz#06ca0085157e42fda7f9e726e79fefc4068840f7"
@@ -3360,6 +3507,13 @@ hasown@^2.0.0, hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
+
+hoist-non-react-statics@^3.3.0:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
+  dependencies:
+    react-is "^16.7.0"
 
 ignore@^5.1.1, ignore@^5.2.0, ignore@^5.3.1:
   version "5.3.2"
@@ -3751,10 +3905,20 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
@@ -4198,12 +4362,17 @@ react-dom@18.3.1:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
+react-fast-compare@^2.0.1:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
+  integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
+
 react-icons@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.4.0.tgz#443000f6e5123ee1b21ea8c0a716f6e7797f7416"
   integrity sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==
 
-react-is@^16.13.1:
+react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -4745,6 +4914,11 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+tiny-warning@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
+  integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -4777,7 +4951,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@2, tslib@^2.4.0, tslib@^2.6.2, tslib@^2.8.0, tslib@^2.8.1:
+tslib@2, tslib@^2.0.0, tslib@^2.4.0, tslib@^2.6.2, tslib@^2.8.0, tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==

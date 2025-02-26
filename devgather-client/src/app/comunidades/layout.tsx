@@ -2,7 +2,7 @@ import { Link } from "@heroui/link";
 import { headers } from "next/headers";
 
 import Navbar from "@/src/components/navbar";
-import { authClient } from "@/src/lib/auth-client";
+import { authClient } from "@/src/shared/lib/auth-client";
 
 export default async function RootLayout({
   children,
@@ -17,8 +17,8 @@ export default async function RootLayout({
 
   return (
     <>
-      <Navbar activePage="communities" session={session.data} />
-      <main className="container mx-auto max-w-5xl pt-8 px-6 flex-grow">
+      <Navbar activePage="comunidades" session={session.data} />
+      <main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">
         {children}
       </main>
       <footer className="w-full flex items-center justify-center py-3">

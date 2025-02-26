@@ -6,8 +6,8 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { toNodeHandler } from 'better-auth/node';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { db } from './shared/db';
-import { auth } from './shared/auth';
+import { prisma } from './@shared/db';
+import { auth } from './@shared/auth';
 
 async function bootstrap() {
   const adapter = express();
@@ -22,7 +22,7 @@ async function bootstrap() {
   adapter.all('/api/auth/*', toNodeHandler(auth));
 
   const app = await NestFactory.create(
-    AppModule.register(db),
+    AppModule.register(prisma),
     new ExpressAdapter(adapter),
     { cors: true },
   );

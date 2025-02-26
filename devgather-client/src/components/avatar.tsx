@@ -9,7 +9,7 @@ import {
 } from "@heroui/dropdown";
 import { useRouter } from "next/navigation";
 
-import { authClient } from "../lib/auth-client";
+import { authClient } from "../shared/lib/auth-client";
 
 type AvatarProps = {
   user: {
