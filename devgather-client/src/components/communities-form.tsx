@@ -4,8 +4,8 @@ import { Select, SelectItem } from "@heroui/select";
 import { Form, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
 
-import { getStateCities, getStates } from "../shared/location";
-import { categories, technologies } from "../shared/categories";
+import { getStateCities, getStates } from "../shared/constants/location";
+import { categories, technologies } from "../shared/constants/categories";
 
 export type CommunitiesFormik = {
   state: string;
@@ -36,7 +36,7 @@ export default function CommunitiesForm() {
           onChange={formik.handleChange}
         >
           {states.map((state) => (
-            <SelectItem key={state.name}>{state.name}</SelectItem>
+            <SelectItem key={state.abbr}>{state.name}</SelectItem>
           ))}
         </Select>
         <Select

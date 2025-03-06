@@ -1,12 +1,18 @@
-import User from 'src/users/domain/user';
-
 export default class Community {
+  id: string;
   image: string;
   name: string;
   state: string;
   city: string;
+  category: string;
+  totalMembers: number;
+  owner: {
+    id: string;
+    name: string;
+    email: string;
+    image: string;
+  };
   description: string;
-  owner: User;
   tags: string[];
   createdAt: Date;
 }

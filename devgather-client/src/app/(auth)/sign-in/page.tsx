@@ -7,7 +7,7 @@ import { Link } from "@heroui/link";
 import Image from "next/image";
 
 import { GithubIcon } from "@/src/components/icons";
-import { authClient } from "@/src/shared/lib/auth-client";
+import { authClient } from "@/src/shared/clients/auth-client";
 
 export default function SignIn() {
   return (

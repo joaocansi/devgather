@@ -5767,4 +5767,4 @@ export const getStates = (): State[] =>
   states.map(({ nome, sigla }) => ({ name: nome, abbr: sigla }));
 
 export const getStateCities = (stateName: string) =>
-  states.find((state) => state.nome == stateName)?.cidades;
+  states.find((state) => state.sigla == stateName)?.cidades;

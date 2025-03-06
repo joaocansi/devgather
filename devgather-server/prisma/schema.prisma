@@ -1,29 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model User {
-  id            String      @id
-  name          String
-  email         String
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
-  Community     Community[]
+  id             String          @id
+  name           String
+  email          String
+  emailVerified  Boolean
+  image          String?
+  createdAt      DateTime
+  updatedAt      DateTime
+  sessions       Session[]
+  accounts       Account[]
+  communities    Community[]
+  communityUsers CommunityUser[]
 
   @@unique([email])
   @@map("user")
@@ -75,15 +70,44 @@ model Verification {
 }
 
 model Community {
-  id          String    @id @default(uuid())
-  image       String
-  name        String
-  state       String
-  city        String
-  description String
-  ownerId     String
-  owner       User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  tags        String[]
-  createdAt   DateTime?
-  updatedAt   DateTime?
+  id             String          @id @default(uuid())
+  image          String
+  name           String
+  state          String
+  city           String
+  totalMembers   Int             @default(0)
+  description    String
+  ownerId        String
+  owner          User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  category       String
+  tags           String[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  communityUsers CommunityUser[]
+
+  @@map("communities")
+}
+
+enum CommunityUserStatus {
+  APPROVED
+  PENDING
+}
+
+enum CommunityUserRole {
+  ADMIN
+  DEFAULT
+}
+
+model CommunityUser {
+  id          String              @id @default(uuid())
+  status      CommunityUserStatus
+  userId      String
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role        CommunityUserRole
+  communityId String
+  community   Community           @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@map("community_users")
 }

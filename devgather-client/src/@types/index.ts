@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-import { authClient } from "../shared/lib/auth-client";
+import { authClient } from "../shared/clients/auth-client";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -17,4 +17,18 @@ export type Community = {
     image: string;
   };
   tags: string[];
+};
+
+export type PaginatedResult<T> = {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+};
+
+export type PaginationOptions<Filter> = {
+  page: number;
+  limit: number;
+  filters?: Filter;
 };
