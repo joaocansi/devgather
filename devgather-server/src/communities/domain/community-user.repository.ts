@@ -1,12 +1,10 @@
 import { CommunityUserRole } from './community-user-role.enum';
-import { CommunityUserStatus } from './community-user-status.enum';
 import { CommunityUserSchema } from './community-user.schema';
 
 export type CreateCommunityUser = {
   userId: string;
   communityId: string;
   role: CommunityUserRole;
-  status: CommunityUserStatus;
 };
 
 export type UpdateCommunityUser = Partial<CreateCommunityUser> & {

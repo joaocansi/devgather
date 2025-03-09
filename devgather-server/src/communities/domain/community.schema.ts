@@ -9,6 +9,7 @@ export class CommunitySchema {
   updatedAt: Date;
   name: string;
   image: string;
+  slug: string;
   category: string;
   state: string;
   city: string;
@@ -25,6 +26,7 @@ export class CommunitySchema {
       description: schema.description,
       image: schema.image,
       tags: schema.tags,
+      slug: schema.slug,
       totalMembers: schema.totalMembers,
       createdAt: schema.createdAt,
       category: schema.category,

@@ -72,7 +72,8 @@ model Verification {
 model Community {
   id             String          @id @default(uuid())
   image          String
-  name           String
+  name           String          @unique()
+  slug           String          @unique()
   state          String
   city           String
   totalMembers   Int             @default(0)
@@ -88,26 +89,20 @@ model Community {
   @@map("communities")
 }
 
-enum CommunityUserStatus {
-  APPROVED
-  PENDING
-}
-
 enum CommunityUserRole {
   ADMIN
   DEFAULT
 }
 
 model CommunityUser {
-  id          String              @id @default(uuid())
-  status      CommunityUserStatus
+  id          String            @id @default(uuid())
   userId      String
-  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   role        CommunityUserRole
   communityId String
-  community   Community           @relation(fields: [communityId], references: [id], onDelete: Cascade)
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
+  community   Community         @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 
   @@map("community_users")
 }

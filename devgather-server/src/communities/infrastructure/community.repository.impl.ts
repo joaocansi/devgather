@@ -13,6 +13,24 @@ import { PaginationOptions } from 'src/@shared/types/paginated';
 @Injectable()
 export default class CommunityRepositoryImpl implements CommunityRepository {
   constructor(private readonly db: PrismaClient) {}
+  findBySlug(slug: string): Promise<CommunitySchema> {
+    return db.community.findFirst({
+      where: {
+        slug,
+      },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            name: true,
+            image: true,
+            email: true,
+          },
+        },
+      },
+    });
+  }
+
   findByName(name: string): Promise<CommunitySchema> {
     return db.community.findFirst({
       where: {

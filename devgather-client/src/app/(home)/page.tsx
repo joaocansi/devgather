@@ -1,8 +1,6 @@
-import { Button } from "@heroui/button";
-import { Card } from "@heroui/card";
-import { Code } from "@heroui/code";
-import { Divider } from "@heroui/divider";
-import { Image } from "@heroui/image";
+"use client";
+
+import { Button, Card, Code, Divider, Image } from "@heroui/react";
 import Link from "next/link";
 
 const cardData = [
@@ -26,7 +24,7 @@ const cardData = [
   },
 ];
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <section className="flex flex-col justify-center gap-4 py-8 md:py-10">

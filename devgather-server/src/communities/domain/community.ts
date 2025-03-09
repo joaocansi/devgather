@@ -3,6 +3,7 @@ export default class Community {
   image: string;
   name: string;
   state: string;
+  slug: string;
   city: string;
   category: string;
   totalMembers: number;

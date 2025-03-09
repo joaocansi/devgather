@@ -1,12 +1,12 @@
 "use client";
 
-import { Divider } from "@heroui/divider";
 import { FormikProvider, useFormik } from "formik";
+import { Divider } from "@heroui/react";
 
 import CommunitiesForm, {
   CommunitiesFormik,
-} from "@/src/components/communities-form";
-import CommunitiesList from "@/src/components/communities-list";
+} from "@/src/app/comunidades/_components/communities-form";
+import CommunitiesList from "@/src/app/comunidades/_components/communities-list";
 
 export default function Home() {
   const formik = useFormik<CommunitiesFormik>({
@@ -14,7 +14,7 @@ export default function Home() {
       city: "",
       category: "",
       state: "",
-      technology: "",
+      tag: "",
       remote: false,
     },
     onSubmit: () => {},

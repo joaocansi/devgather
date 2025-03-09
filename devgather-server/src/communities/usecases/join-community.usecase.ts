@@ -1,14 +1,10 @@
-import {
-  Inject,
-  Injectable,
-  NotFoundException,
-  ConflictException,
-} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import CommunityRepository from '../domain/community.repository';
 import CommunityUserRepository from '../domain/community-user.repository';
 import { Usecase } from 'src/@shared/types/usecase';
 import { CommunityUserSchema } from '../domain/community-user.schema';
 import { CommunityUser } from '../domain/community-user';
+import { AppError, AppErrorType } from 'src/@shared/errors/app-error';
 
 type IJoinCommunityUsecase = {
   communityId: string;
@@ -33,27 +29,36 @@ export class JoinCommunityUsecase
     userId,
   }: IJoinCommunityUsecase): Promise<OJoinCommunityUsecase> {
     const community = await this.communityRepository.findById(communityId);
-    if (!community) throw new NotFoundException('community not found');
+    if (!community)
+      throw new AppError(
+        'comunidade não existe',
+        AppErrorType.COMMUNITY_NOT_FOUND,
+      );
 
     if (community.ownerId === userId)
-      throw new ConflictException('owner must not join his own community');
+      throw new AppError(
+        'usuário é o criador da comunidade e não pode entrar na comunidade como usuário comum.',
+        AppErrorType.OWNER_CANNOT_JOIN,
+      );
 
-    const joinRequest =
+    const communityUser =
       await this.communityUserRepository.findByCommunityIdAndUserId(
         communityId,
         userId,
       );
 
-    if (joinRequest)
-      throw new ConflictException('join request already accepted or declined');
+    if (communityUser)
+      throw new AppError(
+        'usuário já está na comunidade',
+        AppErrorType.USER_ALREADY_JOINED,
+      );
 
-    const communityUser = await this.communityUserRepository.create({
+    const createdCommunityUser = await this.communityUserRepository.create({
       communityId,
       userId,
       role: 'DEFAULT',
-      status: 'PENDING',
     });
 
-    return CommunityUserSchema.toDomain(communityUser);
+    return CommunityUserSchema.toDomain(createdCommunityUser);
   }
 }

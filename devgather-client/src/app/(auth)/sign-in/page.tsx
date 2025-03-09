@@ -1,12 +1,9 @@
 "use client";
 
-import { Button } from "@heroui/button";
-import { Checkbox } from "@heroui/checkbox";
-import { Input } from "@heroui/input";
-import { Link } from "@heroui/link";
 import Image from "next/image";
+import { Button, Checkbox, Input, Link } from "@heroui/react";
 
-import { GithubIcon } from "@/src/components/icons";
+import { GithubIcon } from "@/src/shared/components/icons";
 import { authClient } from "@/src/shared/clients/auth-client";
 
 export default function SignIn() {

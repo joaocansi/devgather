@@ -18,8 +18,7 @@ import { CreateCommunityUsecase } from './usecases/create-community.usecase';
 import { GetCommunityUsecase } from './usecases/get-community.usecase';
 import { JoinCommunityUsecase } from './usecases/join-community.usecase';
 import { GetCommunitiesUsecase } from './usecases/get-communities.usecase';
-import { ApproveCommunityUserUsecase } from './usecases/approve-community-user.usecase';
-import { RejectCommunityUserUsecase } from './usecases/reject-community-user.usecase copy';
+import { NonRestrictedAuthGuard } from 'src/@shared/guards/non-restricted-auth.guard';
 
 @Controller('communities')
 export class CommunitiesController {
@@ -28,8 +27,6 @@ export class CommunitiesController {
     private readonly getCommunityUsecase: GetCommunityUsecase,
     private readonly getCommunitiesUsecase: GetCommunitiesUsecase,
     private readonly joinCommunityUsecase: JoinCommunityUsecase,
-    private readonly approveCommunityUserUsecase: ApproveCommunityUserUsecase,
-    private readonly rejectCommunityUserUsecase: RejectCommunityUserUsecase,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -44,14 +41,15 @@ export class CommunitiesController {
     });
   }
 
+  @UseGuards(NonRestrictedAuthGuard)
   @Get()
   async getCommunities(@Query() query: GetCommunitiesDTO) {
     return this.getCommunitiesUsecase.execute(query);
   }
 
-  @Get('/:communityId')
-  async getCommunity(@Param('communityId') communityId: string) {
-    return this.getCommunityUsecase.execute(communityId);
+  @Get('/:communitySlug')
+  async getCommunity(@Param('communitySlug') communitySlug: string) {
+    return this.getCommunityUsecase.execute(communitySlug);
   }
 
   @UseGuards(AuthGuard)
@@ -61,29 +59,5 @@ export class CommunitiesController {
     @AuthenticatedUser() user: AuthUser,
   ) {
     return this.joinCommunityUsecase.execute({ communityId, userId: user.id });
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('/:communityId/join-request/:requestId/approve')
-  async approveCommunityUser(
-    @Param('requestId') requestId: string,
-    @AuthenticatedUser() user: AuthUser,
-  ) {
-    return this.approveCommunityUserUsecase.execute({
-      requestId,
-      userId: user.id,
-    });
-  }
-
-  @UseGuards(AuthGuard)
-  @Post('/:communityId/join-request/:requestId/reject')
-  async rejectCommunityUser(
-    @Param('requestId') requestId: string,
-    @AuthenticatedUser() user: AuthUser,
-  ) {
-    return this.rejectCommunityUserUsecase.execute({
-      requestId,
-      userId: user.id,
-    });
   }
 }

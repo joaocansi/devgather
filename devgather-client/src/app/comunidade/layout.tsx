@@ -16,7 +16,7 @@ export default async function RootLayout({
 
   return (
     <>
-      <Navbar activePage="comunidades" session={session.data} />
+      <Navbar activePage="" session={session.data} />
       <main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">
         {children}
       </main>

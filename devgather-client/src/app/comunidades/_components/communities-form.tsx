@@ -1,17 +1,17 @@
 "use client";
 
-import { Select, SelectItem } from "@heroui/select";
 import { Form, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
+import { Select, SelectItem } from "@heroui/react";
 
-import { getStateCities, getStates } from "../shared/constants/location";
-import { categories, technologies } from "../shared/constants/categories";
+import { getStateCities, getStates } from "../../../shared/constants/location";
+import { categories, technologies } from "../../../shared/constants/categories";
 
 export type CommunitiesFormik = {
   state: string;
   city: string;
   category: string;
-  technology: string;
+  tag: string;
   remote: boolean;
 };
 
@@ -65,7 +65,7 @@ export default function CommunitiesForm() {
         <Select
           className="w-full"
           label="Selecione a tecnologia"
-          name="technology"
+          name="tag"
           size="sm"
           onChange={formik.handleChange}
         >

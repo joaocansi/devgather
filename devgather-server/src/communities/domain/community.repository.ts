@@ -8,6 +8,7 @@ export type CreateCommunity = {
   image: string;
   name: string;
   state: string;
+  slug: string;
   city: string;
   description: string;
   ownerId: string;
@@ -46,6 +47,7 @@ export type CommunityPaginatedResult = PaginatedResult<{
 }>;
 
 export default interface CommunityRepository {
+  findBySlug(slug: string): Promise<CommunitySchema>;
   findById(id: string): Promise<CommunitySchema>;
   findByName(name: string): Promise<CommunitySchema>;
   findPaginated(

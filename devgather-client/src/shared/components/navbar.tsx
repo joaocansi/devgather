@@ -27,12 +27,8 @@ export default function Navbar({ session, activePage }: NavbarProps) {
       href: "/",
     },
     {
-      name: "Communities",
-      href: "/communities",
-    },
-    {
-      name: "Projects",
-      href: "/projects",
+      name: "Comunidades",
+      href: "/comunidades",
     },
   ];
 
@@ -62,7 +58,6 @@ export default function Navbar({ session, activePage }: NavbarProps) {
             aria-current="page"
             color={activePage === "comunidades" ? "primary" : "foreground"}
             href="/comunidades"
-            isDisabled={!session}
           >
             Comunidades
           </Link>

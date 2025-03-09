@@ -1,8 +1,9 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import CommunityRepository from '../domain/community.repository';
 import { CommunitySchema } from '../domain/community.schema';
 import { Usecase } from 'src/@shared/types/usecase';
 import Community from '../domain/community';
+import { AppError, AppErrorType } from 'src/@shared/errors/app-error';
 
 type IGetCommunityUsecase = string;
 type OGetCommunityUsecase = Community;
@@ -16,9 +17,13 @@ export class GetCommunityUsecase
     private readonly communityRepository: CommunityRepository,
   ) {}
 
-  async execute(communityId: string) {
-    const community = await this.communityRepository.findById(communityId);
-    if (!community) throw new NotFoundException('community not found');
+  async execute(communitySlug: string) {
+    const community = await this.communityRepository.findBySlug(communitySlug);
+    if (!community)
+      throw new AppError(
+        'communidade não encontrada',
+        AppErrorType.COMMUNITY_NOT_FOUND,
+      );
     return CommunitySchema.toDomain(community);
   }
 }

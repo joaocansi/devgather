@@ -36,10 +36,23 @@ export default class CommunityUserRepositoryImpl
     });
   }
 
-  create(data: CreateCommunityUser): Promise<CommunityUserSchema> {
-    return this.db.communityUser.create({
-      data,
-    });
+  async create(data: CreateCommunityUser): Promise<CommunityUserSchema> {
+    const [communityUser] = await this.db.$transaction([
+      this.db.communityUser.create({
+        data,
+      }),
+      this.db.community.update({
+        where: {
+          id: data.communityId,
+        },
+        data: {
+          totalMembers: {
+            increment: 1,
+          },
+        },
+      }),
+    ]);
+    return communityUser;
   }
 
   update({ id, ...data }: UpdateCommunityUser): Promise<CommunityUserSchema> {
