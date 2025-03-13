@@ -1,11 +1,9 @@
-/* eslint-disable padding-line-between-statements */
-"use client";
+import { Avatar } from "@heroui/avatar";
+import { Chip } from "@heroui/chip";
 
-import { useState } from "react";
-import { addToast, Avatar, Button, Chip } from "@heroui/react";
+import { CommunityHeaderButtons } from "./community-header-buttons";
 
 import { Community } from "@/src/app/_actions/get-community.action";
-import { joinCommunity } from "@/src/app/_actions/join-community.action";
 
 type CommunityHeaderProps = {
   community: Community;
@@ -14,28 +12,6 @@ type CommunityHeaderProps = {
 export function CommunityHeader({ community }: CommunityHeaderProps) {
   const renderTagChip = (tag: string) => {
     return <Chip key={`page-${community.slug}-tag-${tag}`}>{tag}</Chip>;
-  };
-
-  const [joinLoading, setJoinLoading] = useState(false);
-  const [isMember, setIsMember] = useState(true);
-
-  const handleJoinButton = async () => {
-    setJoinLoading(true);
-    const { error } = await joinCommunity(community.id);
-    setJoinLoading(false);
-
-    if (error) {
-      addToast({ title: "Erro", description: error.message, color: "danger" });
-      return;
-    }
-
-    addToast({
-      title: "Sucesso",
-      description:
-        "Agora, você faz parte da comunidade " + community.name + ".",
-
-      color: "success",
-    });
   };
 
   return (
@@ -49,13 +25,7 @@ export function CommunityHeader({ community }: CommunityHeaderProps) {
         </div>
         <p>{community.description}</p>
         <div className="flex gap-2">
-          <Button
-            color="primary"
-            isLoading={joinLoading}
-            onPress={handleJoinButton}
-          >
-            Participar
-          </Button>
+          <CommunityHeaderButtons community={community} />
         </div>
       </div>
     </div>

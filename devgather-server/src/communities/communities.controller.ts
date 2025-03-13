@@ -47,9 +47,16 @@ export class CommunitiesController {
     return this.getCommunitiesUsecase.execute(query);
   }
 
+  @UseGuards(NonRestrictedAuthGuard)
   @Get('/:communitySlug')
-  async getCommunity(@Param('communitySlug') communitySlug: string) {
-    return this.getCommunityUsecase.execute(communitySlug);
+  async getCommunity(
+    @Param('communitySlug') communitySlug: string,
+    @AuthenticatedUser() user: AuthUser,
+  ) {
+    return this.getCommunityUsecase.execute({
+      communitySlug,
+      userId: user?.id ?? null,
+    });
   }
 
   @UseGuards(AuthGuard)
