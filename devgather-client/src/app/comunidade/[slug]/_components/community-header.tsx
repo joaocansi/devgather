@@ -1,15 +1,15 @@
+"use client";
+
 import { Avatar } from "@heroui/avatar";
 import { Chip } from "@heroui/chip";
 
 import { CommunityHeaderButtons } from "./community-header-buttons";
 
-import { Community } from "@/src/app/_actions/get-community.action";
+import { useCommunity } from "@/src/shared/hooks/community.hook";
 
-type CommunityHeaderProps = {
-  community: Community;
-};
+export function CommunityHeader() {
+  const { community } = useCommunity();
 
-export function CommunityHeader({ community }: CommunityHeaderProps) {
   const renderTagChip = (tag: string) => {
     return <Chip key={`page-${community.slug}-tag-${tag}`}>{tag}</Chip>;
   };

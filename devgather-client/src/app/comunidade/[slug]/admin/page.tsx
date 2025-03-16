@@ -1,15 +1,14 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 
-import { getCommunity } from "../../_actions/get-community.action";
-
-import { CommunityHeader } from "./_components/community-header";
-import { CommunityNavigation } from "./_components/community-navigation";
+import { CommunityHeader } from "../_components/community-header";
+import { CommunityNavigation } from "../_components/community-navigation";
 
 import { authClient } from "@/src/shared/clients/auth-client";
 import Navbar from "@/src/shared/components/navbar";
 import { SessionProvider } from "@/src/shared/hooks/session.hook";
 import { CommunityProvider } from "@/src/shared/hooks/community.hook";
+import { getCommunity } from "@/src/app/_actions/get-community.action";
 
 export default async function Page({
   params,
@@ -25,16 +24,19 @@ export default async function Page({
   const { slug } = await params;
   const { data: community } = await getCommunity(slug);
 
-  if (!community) {
-    notFound();
+  if (
+    !session.data ||
+    !community ||
+    (community.owner.id !== session.data.user.id &&
+      community.sessionUser.role !== "ADMIN")
+  ) {
+    redirect("/");
   }
-
-  const user = session.data?.user ? session.data.user : null;
 
   return (
     <>
       <Navbar activePage="" session={session.data} />
-      <SessionProvider user={user}>
+      <SessionProvider user={session.data.user}>
         <CommunityProvider community={community}>
           <main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">
             <section className="grid grid-cols-7 gap-10">

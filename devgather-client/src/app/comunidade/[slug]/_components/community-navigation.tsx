@@ -1,32 +1,34 @@
+"use client";
+
 import { EventsTab } from "./tabs/community-events-tab";
 import { ProjectsTab } from "./tabs/community-projects-tab";
-import { SocialMediaTab } from "./tabs/social-media-tab";
+import { SocialMediaTab } from "./tabs/community-social-media-tab";
 
+import { useCommunity } from "@/src/shared/hooks/community.hook";
 import { Tabs } from "@/src/shared/components/tabs";
 
-type CommunityNavigationProps = {
-  isMember: boolean;
-};
+export function CommunityNavigation() {
+  const { userRole } = useCommunity();
+  const isMember = userRole !== "";
 
-export function CommunityNavigation({ isMember }: CommunityNavigationProps) {
   return (
     <Tabs
+      color="primary"
       tabs={[
-        { title: "Eventos", key: "eventos", children: <EventsTab /> },
         {
           title: "Redes Sociais",
           key: "socialmedia",
           children: <SocialMediaTab />,
         },
         {
-          title: "Projetos",
-          key: "projetos",
-          children: <ProjectsTab />,
+          title: "Eventos",
+          key: "eventos",
+          children: <EventsTab />,
           isLocked: !isMember,
         },
         {
-          title: "Discussões",
-          key: "discussoes",
+          title: "Projetos",
+          key: "projetos",
           children: <ProjectsTab />,
           isLocked: !isMember,
         },

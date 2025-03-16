@@ -12,8 +12,20 @@ export default class CommunityUserRepositoryImpl
 {
   constructor(private readonly db: PrismaClient) {}
 
-  async deleteById(id: string): Promise<void> {
-    await this.db.communityUser.delete({ where: { id } });
+  async deleteById(id: string, communityId: string): Promise<void> {
+    await this.db.$transaction([
+      this.db.community.update({
+        where: {
+          id: communityId,
+        },
+        data: {
+          totalMembers: {
+            decrement: 1,
+          },
+        },
+      }),
+      this.db.communityUser.delete({ where: { id } }),
+    ]);
   }
 
   findByCommunityIdAndUserId(

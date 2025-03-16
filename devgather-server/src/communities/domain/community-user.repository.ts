@@ -12,7 +12,7 @@ export type UpdateCommunityUser = Partial<CreateCommunityUser> & {
 };
 
 export default interface CommunityUserRepository {
-  deleteById(id: string): Promise<void>;
+  deleteById(id: string, communityId: string): Promise<void>;
   findById(id: string): Promise<CommunityUserSchema>;
   findByCommunityIdAndUserId(
     communityId: string,

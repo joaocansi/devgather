@@ -13,8 +13,11 @@ export type Community = {
   description: string;
   image: string;
   slug: string;
+  owner: {
+    id: string;
+  };
   sessionUser: {
-    role: string;
+    role: "DEFAULT" | "ADMIN";
   };
 };
 

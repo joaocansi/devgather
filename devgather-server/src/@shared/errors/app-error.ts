@@ -6,6 +6,7 @@ export enum AppErrorType {
   COMMUNITY_ALREADY_EXISTS = 'COMMUNITY_ALREADY_EXISTS',
   USER_ALREADY_JOINED = 'USER_ALREADY_JOINED',
   OWNER_CANNOT_JOIN = 'OWNER_CANNOT_JOIN',
+  NOT_MEMBER = 'NOT_MEMBER',
 }
 
 export const ERROR_STATUS_CODES: Record<AppErrorType, number> = {
@@ -16,6 +17,7 @@ export const ERROR_STATUS_CODES: Record<AppErrorType, number> = {
   [AppErrorType.USER_ALREADY_JOINED]: 409,
   [AppErrorType.USER_UNAUTHORIZED]: 403,
   [AppErrorType.OWNER_CANNOT_JOIN]: 400,
+  [AppErrorType.NOT_MEMBER]: 404,
 };
 
 export const getStatusCode = (errorType: AppErrorType): number => {

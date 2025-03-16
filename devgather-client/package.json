@@ -3,7 +3,7 @@
  "version": "0.0.1",
  "private": true,
  "scripts": {
-  "dev": "export PORT=8080 && next dev --turbopack",
+  "dev": "export PORT=8080 && next dev",
   "build": "next build",
   "start": "next start",
   "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"

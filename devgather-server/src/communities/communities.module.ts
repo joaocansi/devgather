@@ -7,6 +7,7 @@ import { JoinCommunityUsecase } from './usecases/join-community.usecase';
 import { GetCommunityUsecase } from './usecases/get-community.usecase';
 import { db } from 'src/@shared/db';
 import { GetCommunitiesUsecase } from './usecases/get-communities.usecase';
+import { LeaveCommunityUsecase } from './usecases/leave-community.usecase';
 
 @Module({
   controllers: [CommunitiesController],
@@ -15,6 +16,7 @@ import { GetCommunitiesUsecase } from './usecases/get-communities.usecase';
     JoinCommunityUsecase,
     GetCommunityUsecase,
     GetCommunitiesUsecase,
+    LeaveCommunityUsecase,
     {
       provide: 'COMMUNITY_REPOSITORY',
       useFactory: () => {

@@ -8,6 +8,7 @@ enum ApiErrorType {
   COMMUNITY_ALREADY_EXISTS = "COMMUNITY_ALREADY_EXISTS",
   OWNER_CANNOT_JOIN = "OWNER_CANNOT_JOIN",
   USER_ALREADY_JOINED = "USER_ALREADY_JOINED",
+  NOT_MEMBER = "NOT_MEMBER",
 }
 
 interface ExpectedResponse {
@@ -24,6 +25,7 @@ export const ERROR_MESSAGES: Record<ApiErrorType, string> = {
   [ApiErrorType.OWNER_CANNOT_JOIN]:
     "Dono da comunidade não pode entrar na própria comunidade",
   [ApiErrorType.USER_ALREADY_JOINED]: "Usuário já é membro da comunidade",
+  [ApiErrorType.NOT_MEMBER]: "Usuário não é membro da comunidade",
 };
 
 export type CustomMessage = {
