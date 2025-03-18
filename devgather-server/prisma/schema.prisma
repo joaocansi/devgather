@@ -86,23 +86,17 @@ model Community {
   updatedAt      DateTime        @updatedAt
   communityUsers CommunityUser[]
 
-  @@map("communities")
-}
-
-enum CommunityUserRole {
-  ADMIN
-  DEFAULT
+  @@map("community")
 }
 
 model CommunityUser {
-  id          String            @id @default(uuid())
   userId      String
-  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role        CommunityUserRole
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   communityId String
-  community   Community         @relation(fields: [communityId], references: [id], onDelete: Cascade)
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  @@map("community_users")
+  @@id([communityId, userId])
+  @@map("community_user")
 }

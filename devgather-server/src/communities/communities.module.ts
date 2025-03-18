@@ -8,11 +8,13 @@ import { GetCommunityUsecase } from './usecases/get-community.usecase';
 import { db } from 'src/@shared/db';
 import { GetCommunitiesUsecase } from './usecases/get-communities.usecase';
 import { LeaveCommunityUsecase } from './usecases/leave-community.usecase';
+import { UpdateCommunityUsecase } from './usecases/update-community.usecase';
 
 @Module({
   controllers: [CommunitiesController],
   providers: [
     CreateCommunityUsecase,
+    UpdateCommunityUsecase,
     JoinCommunityUsecase,
     GetCommunityUsecase,
     GetCommunitiesUsecase,

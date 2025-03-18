@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import CommunityUserRepository, {
   CreateCommunityUser,
-  UpdateCommunityUser,
 } from '../domain/community-user.repository';
 import { CommunityUserSchema } from '../domain/community-user.schema';
 
@@ -12,7 +11,7 @@ export default class CommunityUserRepositoryImpl
 {
   constructor(private readonly db: PrismaClient) {}
 
-  async deleteById(id: string, communityId: string): Promise<void> {
+  async deleteById(communityId: string, userId: string): Promise<void> {
     await this.db.$transaction([
       this.db.community.update({
         where: {
@@ -24,26 +23,17 @@ export default class CommunityUserRepositoryImpl
           },
         },
       }),
-      this.db.communityUser.delete({ where: { id } }),
+      this.db.communityUser.delete({
+        where: { communityId_userId: { communityId, userId } },
+      }),
     ]);
   }
 
-  findByCommunityIdAndUserId(
-    communityId: string,
-    userId: string,
-  ): Promise<CommunityUserSchema> {
+  findById(communityId: string, userId: string): Promise<CommunityUserSchema> {
     return this.db.communityUser.findFirst({
       where: {
         communityId,
         userId,
-      },
-    });
-  }
-
-  findById(id: string): Promise<CommunityUserSchema> {
-    return this.db.communityUser.findFirst({
-      where: {
-        id,
       },
     });
   }
@@ -65,12 +55,5 @@ export default class CommunityUserRepositoryImpl
       }),
     ]);
     return communityUser;
-  }
-
-  update({ id, ...data }: UpdateCommunityUser): Promise<CommunityUserSchema> {
-    return this.db.communityUser.update({
-      where: { id },
-      data,
-    });
   }
 }

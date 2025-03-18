@@ -41,11 +41,10 @@ export class JoinCommunityUsecase
         AppErrorType.OWNER_CANNOT_JOIN,
       );
 
-    const communityUser =
-      await this.communityUserRepository.findByCommunityIdAndUserId(
-        communityId,
-        userId,
-      );
+    const communityUser = await this.communityUserRepository.findById(
+      communityId,
+      userId,
+    );
 
     if (communityUser)
       throw new AppError(
@@ -56,7 +55,6 @@ export class JoinCommunityUsecase
     const createdCommunityUser = await this.communityUserRepository.create({
       communityId,
       userId,
-      role: 'DEFAULT',
     });
 
     return CommunityUserSchema.toDomain(createdCommunityUser);

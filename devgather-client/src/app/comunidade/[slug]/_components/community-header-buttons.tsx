@@ -5,6 +5,7 @@ import {
   Avatar,
   Button,
   Chip,
+  Form,
   Input,
   Modal,
   ModalBody,
@@ -17,13 +18,17 @@ import {
 } from "@heroui/react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import { Formik } from "formik";
+import { useFormik } from "formik";
 
 import { joinCommunity } from "@/src/app/_actions/join-community.action";
 import { Community } from "@/src/app/_actions/get-community.action";
 import { useCommunity } from "@/src/shared/hooks/community.hook";
 import { leaveCommunity } from "@/src/app/_actions/leave-community.action";
 import { technologies } from "@/src/shared/constants/categories";
+import {
+  updateCommunity,
+  UpdateCommunity,
+} from "@/src/app/_actions/update-community.action";
 
 type CommunityHeaderButtonsProps = {
   community: Community;
@@ -35,8 +40,8 @@ export function CommunityHeaderButtons({
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { userRole, refreshCommunity } = useCommunity();
-  const isMember = userRole !== "";
+  const { sessionRole, refreshCommunity } = useCommunity();
+  const isMember = sessionRole === "DEFAULT";
 
   const handleJoinButton = async () => {
     setLoading(true);
@@ -84,17 +89,42 @@ export function CommunityHeaderButtons({
     setIsOpen(true);
   };
 
-  const handleEditSubmit = (values: any) => {};
+  const handleEditSubmit = async (values: UpdateCommunity) => {
+    setLoading(true);
+    const { error } = await updateCommunity(community.id, values);
+
+    if (error) {
+      setLoading(false);
+      addToast({ title: "Erro", description: error.message, color: "danger" });
+
+      return;
+    }
+
+    await refreshCommunity();
+    setLoading(false);
+    addToast({
+      title: "Sucesso",
+      description: "Dados da comunidade atualizados com sucesso.",
+      color: "success",
+    });
+  };
 
   const handleOpenChange = (isOpen: boolean) => {
     setIsOpen(isOpen);
   };
 
-  // let technologiesItems = technologies.map((item) => ({
-  //   name: item,
-  // }));
+  const { handleChange, handleSubmit, values, setFieldValue } =
+    useFormik<UpdateCommunity>({
+      initialValues: {
+        description: community.description,
+        image: community.image,
+        name: community.name,
+        tags: community.tags,
+      },
+      onSubmit: handleEditSubmit,
+    });
 
-  if (userRole === "OWNER") {
+  if (sessionRole === "OWNER") {
     return (
       <>
         <Button
@@ -117,76 +147,72 @@ export function CommunityHeaderButtons({
                   Editar Comunidade
                 </ModalHeader>
                 <ModalBody>
-                  <Formik initialValues={community} onSubmit={handleEditSubmit}>
-                    {({
-                      values: { name, description, tags, image },
-                      handleChange,
-                    }) => (
-                      <>
-                        <div className="flex gap-4 items-center">
-                          <Avatar
-                            isBordered
-                            className="min-w-24 min-h-24"
-                            size="lg"
-                            src={image}
-                          />
-                          <Input
-                            defaultValue={image}
-                            label="Imagem da comunidade"
-                            name="image"
-                            placeholder="Copie a URL da imagem da comunidade"
-                            onBlur={handleChange}
-                          />
-                        </div>
-                        <Input
-                          defaultValue={name}
-                          label="Nome da comunidade"
-                          name="name"
-                          placeholder="Digite o nome para comunidade"
-                          onChange={handleChange}
-                        />
-                        <Textarea
-                          defaultValue={description}
-                          label="Descrição da comunidade"
-                          maxRows={5}
-                          name="description"
-                          placeholder="Fale um pouco mais sobre a comunidade"
-                          onChange={handleChange}
-                        />
-                        <Select
-                          aria-label="Tags da comunidade"
-                          classNames={{
-                            trigger: "min-h-12 py-2",
-                          }}
-                          defaultSelectedKeys={tags}
-                          isMultiline={true}
-                          label="Tags da comunidade"
-                          name="tags"
-                          renderValue={(items) => {
-                            return (
-                              <div className="flex flex-wrap gap-1 mt-1">
-                                {items.map((item) => (
-                                  <Chip key={item.key}>{item.textValue}</Chip>
-                                ))}
-                              </div>
-                            );
-                          }}
-                          selectionMode="multiple"
-                          onChange={handleChange}
-                        >
-                          {technologies.map((tag) => (
-                            <SelectItem key={tag} textValue={tag} />
-                          ))}
-                        </Select>
-                      </>
-                    )}
-                  </Formik>
+                  <Form>
+                    <div className="flex gap-4 items-center w-full">
+                      <Avatar
+                        isBordered
+                        className="min-w-24 min-h-24"
+                        size="lg"
+                        src={values.image}
+                      />
+                      <Input
+                        className="w-full"
+                        defaultValue={values.image}
+                        label="Imagem da comunidade"
+                        name="image"
+                        placeholder="Copie a URL da imagem da comunidade"
+                        onBlur={handleChange}
+                      />
+                    </div>
+                    <Input
+                      defaultValue={values.name}
+                      label="Nome da comunidade"
+                      name="name"
+                      placeholder="Digite o nome para comunidade"
+                      onChange={handleChange}
+                    />
+                    <Textarea
+                      defaultValue={values.description}
+                      label="Descrição da comunidade"
+                      maxRows={5}
+                      name="description"
+                      placeholder="Fale um pouco mais sobre a comunidade"
+                      onChange={handleChange}
+                    />
+                    <Select
+                      aria-label="Tags da comunidade"
+                      classNames={{
+                        trigger: "min-h-12 py-2",
+                      }}
+                      defaultSelectedKeys={values.tags}
+                      isMultiline={true}
+                      label="Tags da comunidade"
+                      name="tags"
+                      renderValue={(items) => {
+                        return (
+                          <div className="flex flex-wrap gap-1 mt-1">
+                            {items.map((item) => (
+                              <Chip key={item.key}>{item.textValue}</Chip>
+                            ))}
+                          </div>
+                        );
+                      }}
+                      selectionMode="multiple"
+                      onChange={(e) => {
+                        setFieldValue(e.target.name, e.target.value.split(","));
+                      }}
+                    >
+                      {technologies.map((tag) => (
+                        <SelectItem key={tag}>{tag}</SelectItem>
+                      ))}
+                    </Select>
+                  </Form>
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Fechar
                   </Button>
-                  <Button color="primary" onPress={handleEditSubmit}>
+                  <Button color="primary" onPress={() => handleSubmit()}>
                     Salvar
                   </Button>
                 </ModalFooter>
@@ -198,7 +224,7 @@ export function CommunityHeaderButtons({
     );
   }
 
-  if (isMember) {
+  if (!isMember) {
     return (
       <Button color="primary" isLoading={loading} onPress={handleJoinButton}>
         Participar

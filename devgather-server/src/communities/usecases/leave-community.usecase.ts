@@ -27,18 +27,10 @@ export class LeaveCommunityUsecase
     communityId,
     userId,
   }: ILeaveCommunityUsecase): Promise<OLeaveCommunityUsecase> {
-    const community = await this.communityRepository.findById(communityId);
-    if (!community)
-      throw new AppError(
-        'comunidade não existe',
-        AppErrorType.COMMUNITY_NOT_FOUND,
-      );
-
-    const communityUser =
-      await this.communityUserRepository.findByCommunityIdAndUserId(
-        communityId,
-        userId,
-      );
+    const communityUser = await this.communityUserRepository.findById(
+      communityId,
+      userId,
+    );
 
     if (!communityUser)
       throw new AppError(
@@ -46,10 +38,7 @@ export class LeaveCommunityUsecase
         AppErrorType.NOT_MEMBER,
       );
 
-    await this.communityUserRepository.deleteById(
-      communityUser.id,
-      communityId,
-    );
+    await this.communityUserRepository.deleteById(communityId, userId);
     return;
   }
 }

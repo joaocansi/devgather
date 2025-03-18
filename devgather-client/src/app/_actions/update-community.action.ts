@@ -2,38 +2,33 @@
 
 import { ActionResponse, sessionCookies } from "./_action";
 import { handleApiError } from "./_api-messager";
+import { Community } from "./get-community.action";
 
 import { api } from "@/src/shared/clients/api-client";
 
-export type Community = {
-  id: string;
-  totalMembers: number;
+export type UpdateCommunity = {
   tags: string[];
   name: string;
   description: string;
   image: string;
-  slug: string;
-  owner: {
-    id: string;
-  };
-  sessionUser: string;
 };
 
-export async function getCommunity(
-  slug: string,
+export async function updateCommunity(
+  id: string,
+  data: UpdateCommunity,
 ): Promise<ActionResponse<Community>> {
   const cookieHeader = await sessionCookies();
 
   try {
-    const response = await api.get(`/communities/${slug}`, {
+    const response = await api.patch(`/communities/${id}`, data, {
       headers: {
         Cookie: cookieHeader,
       },
     });
-    const data = response.data;
+    const result = response.data;
 
     return {
-      data,
+      data: result,
       error: null,
     };
   } catch (error) {

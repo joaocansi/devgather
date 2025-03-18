@@ -4,7 +4,6 @@ import { CommunitySchema } from '../domain/community.schema';
 import { Usecase } from 'src/@shared/types/usecase';
 import Community from '../domain/community';
 import { AppError, AppErrorType } from 'src/@shared/errors/app-error';
-import { CommunityUserRole } from '../domain/community-user-role.enum';
 import CommunityUserRepository from '../domain/community-user.repository';
 
 type IGetCommunityUsecase = {
@@ -12,9 +11,7 @@ type IGetCommunityUsecase = {
   communitySlug: string;
 };
 type OGetCommunityUsecase = Community & {
-  sessionUser: {
-    role: CommunityUserRole;
-  };
+  sessionUser: string;
 };
 
 @Injectable()
@@ -43,18 +40,13 @@ export class GetCommunityUsecase
       sessionUser: null,
     } as OGetCommunityUsecase;
 
-    console.log(dto);
     if (dto.userId) {
-      const communityUser =
-        await this.communityUserRepository.findByCommunityIdAndUserId(
-          community.id,
-          dto.userId,
-        );
+      const communityUser = await this.communityUserRepository.findById(
+        community.id,
+        dto.userId,
+      );
 
-      if (communityUser)
-        data.sessionUser = {
-          role: communityUser.role,
-        };
+      if (communityUser) data.sessionUser = dto.userId;
     }
 
     return data;

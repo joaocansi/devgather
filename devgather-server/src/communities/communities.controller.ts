@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   UseGuards,
@@ -20,11 +21,14 @@ import { JoinCommunityUsecase } from './usecases/join-community.usecase';
 import { GetCommunitiesUsecase } from './usecases/get-communities.usecase';
 import { NonRestrictedAuthGuard } from 'src/@shared/guards/non-restricted-auth.guard';
 import { LeaveCommunityUsecase } from './usecases/leave-community.usecase';
+import { UpdateCommunityUsecase } from './usecases/update-community.usecase';
+import { UpdateCommunityDTO } from './dtos/update-community.dto';
 
 @Controller('communities')
 export class CommunitiesController {
   constructor(
     private readonly createCommunityUsecase: CreateCommunityUsecase,
+    private readonly updateCommunityUsecase: UpdateCommunityUsecase,
     private readonly getCommunityUsecase: GetCommunityUsecase,
     private readonly getCommunitiesUsecase: GetCommunitiesUsecase,
     private readonly joinCommunityUsecase: JoinCommunityUsecase,
@@ -39,6 +43,20 @@ export class CommunitiesController {
   ) {
     return this.createCommunityUsecase.execute({
       ...dto,
+      ownerId: user.id,
+    });
+  }
+
+  @UseGuards(AuthGuard)
+  @Patch('/:communityId')
+  async updateCommunity(
+    @Param('communityId') communityId: string,
+    @Body() dto: UpdateCommunityDTO,
+    @AuthenticatedUser() user: AuthUser,
+  ) {
+    return this.updateCommunityUsecase.execute({
+      ...dto,
+      id: communityId,
       ownerId: user.id,
     });
   }

@@ -8,8 +8,8 @@ import { useCommunity } from "@/src/shared/hooks/community.hook";
 import { Tabs } from "@/src/shared/components/tabs";
 
 export function CommunityNavigation() {
-  const { userRole } = useCommunity();
-  const isMember = userRole !== "";
+  const { sessionRole } = useCommunity();
+  const isMember = sessionRole !== "";
 
   return (
     <Tabs
